@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "app.fullname" . }}
+  name: {{ include "app.fullname" . }}
+  namespace: dev2    
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "app.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "app.fullname" . }}
+    spec:
+      containers:
+      - image: {{ .Values.deploy.image }}:{{ .Values.deploy.tag }}
+        name: {{ .Values.deploy.name }}

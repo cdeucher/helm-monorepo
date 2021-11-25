@@ -1,0 +1,4 @@
+deploy:
+  name: "application"
+  image: "nginx"
+  tag: "1.20.2"
